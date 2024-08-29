@@ -1,56 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useState } from 'react';
+// import logo from './logo.svg';
+// import { Counter } from './features/counter/Counter';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FaQuoteLeft, FaQuoteRight} from 'react-icons/fa'
+import { faTwitter, faTumblr } from '@fortawesome/free-brands-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'; 
+import quotes from '../src/app/quotes.json'
+
 
 function App() {
+  interface RandomQuote {
+    quote: string;
+    author: string;
+  }
+
+  const getQuote = (): RandomQuote => {
+    return quotes[Math.floor(Math.random() * quotes.length)]
+  }
+
+  const [quote, setQuote] = useState(getQuote())
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div id="wrapper">
+      <div id="quote-box">
+        <FaQuoteLeft size={30} />
+        <div className="quote-text" id="text"><h4>{quote.quote}</h4></div>
+        <FaQuoteRight size={30} />
+        <div className="quote-author" id="author">~ {quote.author}</div>
+        <div className="buttons">
+          <span>
+            <a id="tweet-quote" href="https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&{quote.quote}" className="btn btn-primary">
+              <FontAwesomeIcon icon={faTwitter} size="1x" />
+            </a>
+            <a href="https://tumblr.com" className="btn btn-primary">
+              <FontAwesomeIcon icon={faTumblr} size="1x" />
+            </a>
+          </span>
+          <span>
+            <Button id="new-quote" variant="primary" onClick={getQuote}>
+              New Quote
+            </Button>
+          </span>
+        </div>
+      </div>
+      <div className="footer"></div>
+
     </div>
   );
 }
