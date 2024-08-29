@@ -20,7 +20,7 @@ function App() {
     return quotes[Math.floor(Math.random() * quotes.length)]
   }
 
-  const [quote, setQuote] = useState(getQuote())
+  const [quote] = useState(getQuote())
   return (
     <div id="wrapper">
       <div id="quote-box">
