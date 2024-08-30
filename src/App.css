@@ -1,3 +1,10 @@
+.background {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #wrapper {
   width: 750px;
   height: 300px;
@@ -40,6 +47,10 @@
   
 }
 
+
+.buttons > span > a, .buttons > span > Button {
+  border: 0;
+}
 .buttons {
   margin-top: 2rem;
   display: flex;
@@ -57,7 +68,8 @@
 }
 
 .buttons > span:first-of-type > a  {
-  width: 45px;
+  width: fit-content;
+  padding: 0.6em 1.2em;
 }
 
 
