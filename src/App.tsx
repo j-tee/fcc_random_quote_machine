@@ -8,7 +8,7 @@ import { faTwitter, faTumblr } from '@fortawesome/free-brands-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button'; 
 import quotes from '../src/app/quotes.json'
-import { backgroundColorNames } from '../node_modules/@isaacs/cliui/node_modules/ansi-styles/index.d';
+
 
 interface RandomQuote {
   quote: string;
